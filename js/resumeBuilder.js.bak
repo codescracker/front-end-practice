@@ -1,0 +1,182 @@
+/*
+This is empty on purpose! Your code to build the resume will go here.
+ */
+
+ //$("#main").append("Shaowei JS");
+ 
+// var awsomeToughts = "I am Shaowei and I am AWESOME!";
+ //console.log(awsomeToughts)
+ 
+// var funThoughts = awsomeToughts.replace("AWESOME","FUN");
+// $("#main").append(funThoughts)
+ 
+// var formattedName = HTMLheaderName.replace("%data%","Shaowei")
+// var formattedRole = HTMLheaderRole.replace("%data%","web developer")
+
+// $("#header").prepend(formattedRole);
+// $("#header").prepend(formattedName);
+
+// var audacity = "audacity";
+// var udacity = audacity.charAt(1).toUpperCase()+audacity.slice(2);
+// console.log(udacity);
+
+// var bio = {"name":"Shaowei","role":"learner","contact_info":"5083088487","picture_URL":"https://www.linkedin.com/in/shaowei-gong-6a3603114?trk=hp-identity-photo",
+//	"welcome_message":"hello","skill":"hahahaha"}
+
+// $("#main").append(bio["name"]);
+
+// var work = {};
+// work.current_job = "student";
+// work.employer = "wpi";
+// work.year = "23";
+// work.city= "Worcester"
+
+// var education = {"school":{"city":"Worcester","major":"Data Science","minor":"English","graduation_year":"2017"},{"online_course":"Udacity"}
+// }}};
+// education["lastSchool"]="wpi";
+// education["year"]="2015";
+// education["city"]="MASS"
+
+// $("#main").append(work.current_job);
+// $("#main").append(education["city"]);
+
+var work={
+	"jobs": [{
+		"employer": "Swufe",
+		"title": "undergraduatestudent",
+		"location": "Chengdu",
+		"dates": "4years",
+		"description": "interesting"
+	}, {
+		"employer": "WPI",
+		"title": "graduatestudent",
+		"location": "Worcester",
+		"dates": "2years",
+		"description": "busy"
+	}]
+}
+
+var project={
+	"projects": [{
+		"title": "xixi",
+		"dates": "haha",
+		"description": "yy",
+		"images": "C:/Users/Shaowei/Desktop/frontend-nanodegree-resume/images/map.jpg"
+	}, {
+		"title": "aa",
+		"dates": "bb",
+		"description": "cc",
+		"images": "C:/Users/Shaowei/Desktop/frontend-nanodegree-resume/images/map.jpg"
+	}]
+}
+
+var bio={
+	"name": "Shaowei",
+	"role": "Student",
+	"welcomeMessage": "hahaha",
+	"contacts": {
+		"mobile": "5083088487",
+		"email": "sgong@wpi.edu",
+		"github": "https://github.com/codescracker",
+		"twitter": "https://twitter.com/?lang=en",
+		"location": "Worcester"
+	},
+	"skills": ["xixi", "haha"]
+}
+
+var education={
+	"schools": [{
+			"name": "Swufe",
+			"location": "Chengdu",
+			"degree": "Balchor",
+			"majors": "Statistics",
+			"dates": "2011-2015",
+			"website": "www.sina.com",
+			"onlineCourse": [{
+				"title": "android",
+				"school": "udacity",
+				"dates": "long"
+			}, {
+				"title": "web",
+				"school": "udacity",
+				"dates": "long"
+			}]
+		},
+
+		{
+			"name": "WPI",
+			"location": "Worcester",
+			"degree": "master",
+			"majors": "Data Science",
+			"dates": "2015-2017",
+			"website": "www.163.com",
+			"onlineCourse": [{
+				"title": "oop",
+				"school": "udemy",
+				"dates": "long"
+			}]
+		}
+	]
+}
+
+function displayskill(){
+if (bio["skills"].length>0){
+	$("#header").append(HTMLskillsStart);
+	
+	for (var i =0; i<bio["skills"].length; i++){
+	   $("#skills").append(HTMLskills.replace('%data%',bio['skills'][i]))}
+	}	
+}
+
+
+function displayjob(){
+if (work["jobs"].length>0){
+	
+	 for (job in work['jobs']){
+	 	 $("#workExperience").append(HTMLworkStart);
+	 	 var employ= HTMLworkEmployer.replace("%data%",work['jobs'][job]["employer"]);
+	 	 var title= HTMLworkTitle.replace("%data%",work['jobs'][job]['title']);
+	 	 conca=employ+title;
+	 	 var workdate = HTMLworkDates.replace('%data%',work['jobs'][job]["dates"]);
+	 	 var desc= HTMLworkDescription.replace("%data%",work['jobs'][job]["description"]);
+	 	 $(".work-entry:last").append(conca);
+	 	 $(".work-entry:last").append(workdate);
+	 	 $(".work-entry:last").append(desc);
+	 	};
+	}
+}
+
+displayskill();
+displayjob();
+
+$("#main").append(internationalizeButton);
+
+function inName(name){
+	var listName = name.trim().split(" ");
+	var firstName = listName[0];
+   firstName = firstName[0].toUpperCase()+firstName.slice(1);
+  var lastName = listName[1];
+  lastName = lastName.toUpperCase();
+  var res = firstName.concat(' ',lastName);
+  return res
+	}
+	
+
+project.display=function(){
+	if (project['projects'].length>0){
+		for (pro in project['projects']){
+	     $("#projects").append(HTMLprojectStart);
+	     var title = HTMLprojectTitle.replace('%data%',project['projects'][pro]['title']);
+	     var date = HTMLprojectDates.replace('%data%',project['projects'][pro]['dates']);
+	     var desc = HTMLprojectDescription.replace('%data%',project['projects'][pro]['description']);
+	     var img = HTMLprojectImage.replace('%data%',project['projects'][pro]['images']);
+	     $(".project-entry:last").append(title);
+	 	   $(".project-entry:last").append(date);
+	 	   $(".project-entry:last").append(desc);
+	 	   $(".project-entry:last").append(img);
+	}
+		}
+	
+	}
+	
+project.display();
